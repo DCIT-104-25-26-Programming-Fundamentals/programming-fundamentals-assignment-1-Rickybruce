@@ -90,3 +90,92 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def verification(student_id, students) :
+    for i, data in enumerate(students) :
+        if data["id"] == student_id :
+            return True, i
+    return False, -1
+
+
+def add_student(students) :
+    student_name = input("Student name: ")
+    student_id = input("Student ID: ")
+    num_score = int(input("How many scores? "))
+    list_score = []
+    for i in range(1,num_score+1) :
+        score = int(input(f"Enter score {i}: "))
+        list_score.append(score)
+    student_data = {
+        "name" : student_name ,
+        "id" : student_id ,
+        "scores" : list_score
+    }
+    students.append(student_data)
+    print(f"Student \"{student_name}\" added successfully.")
+
+
+def average_score(index, students) :
+    scores = students[index]["scores"]
+    if len(scores) == 0 :
+        return 0.0
+    total = 0
+    for x in scores :
+        total += x
+    return total / len(scores)
+           
+
+def view_all_student(students) :
+    if len(students) == 0 :
+        print("No students have been added yet.")
+        return
+
+    print("""
+    --------------------------------------------------
+    Name           ID          Scores         Average
+    --------------------------------------------------
+    """) 
+    for i, data in enumerate(students) :
+        scores_text = ", ".join(str(score) for score in data["scores"])
+        average = average_score(i, students)
+        print(f"{data['name']}   {data['id']}    {scores_text}     {average:.2f}")
+    print("--------------------------------------------------")
+
+
+def main() :
+    students = []
+
+    print("""
+    ================================
+    STUDENT RECORD SYSTEM MENU
+    ================================
+    1. Add student
+    2. Display all student
+    3. Calculate average
+    4. Quit
+    """)
+
+    n = int(input("Enter your choice (1-4): "))
+    if n == 4 :
+        print("Goodbye")
+    while n != 4 :
+        if n == 1 :
+            add_student(students)
+        elif n == 2 :
+            view_all_student(students)
+        elif n == 3 :
+            student_id = input("Enter student ID: ")
+            found, index = verification(student_id, students)
+            if found :
+                average = average_score(index, students)
+                print(f"{students[index]['name']}'s average score: {average:.2f}")
+            else :
+                print("Student not found")
+        else :
+            print("Error : invalid input .Choose a number from 1 to 4")
+
+        n = int(input("Enter your choice (1-4): "))
+
+
+if __name__ == "__main__" :
+    main()
+
