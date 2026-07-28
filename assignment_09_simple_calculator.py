@@ -68,3 +68,75 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def addition(a, b) :
+    print(f"Result: {a} + {b} = {a + b}")
+
+
+def subtraction(a, b) :
+    print(f"Result: {a} - {b} = {a - b}")
+
+
+def multiplication(a, b) :
+    print(f"Result: {a} * {b} = {a * b}")
+
+
+def division(a, b) :
+    if b == 0 :
+        print("Error: Cannot divide by zero.")
+    else :
+        result = a / b
+        print(f"Result: {a} / {b} = {result:.2f}")
+
+
+def modulus(a, b) :
+    if b == 0 :
+        print("Error: Cannot divide by zero.")
+    else :
+        print(f"Result: {a} % {b} = {a % b}")
+
+
+def exponentiation(a, b) :
+    print(f"Result: {a} ** {b} = {a ** b}")
+
+
+def main() :
+    print("============================")
+    print("     SIMPLE CALCULATOR")
+    print("============================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+    o = int(input("Select an operation (1-7):"))
+
+    while o != 7 :
+        if 1 <= o <= 6 :
+            N1 = int(input("Enter first number : "))
+            N2 = int(input("Enter second number: "))
+            if o == 1 :
+                addition(N1,N2)
+            elif o == 2 :
+                subtraction(N1,N2)
+            elif o == 3 :
+                multiplication(N1,N2)
+            elif o == 4 :
+                division(N1,N2)
+            elif o == 5 :
+                modulus(N1,N2)
+            elif o == 6 :
+                exponentiation(N1,N2)
+        else :
+            print("Error : Invalid Input")
+
+        o = int(input("Select an operation (1-7):"))
+
+    print("Goodbye!")
+
+
+if __name__ == "__main__":
+    main()
+
