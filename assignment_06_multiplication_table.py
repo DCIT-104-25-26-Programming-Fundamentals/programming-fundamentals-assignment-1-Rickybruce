@@ -54,4 +54,27 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def mutiples_single(n) :
+   for i in range(1,13) :
+           product = n * i
+           print(f"{n}  x  {i}  =  {product}")
 
+def multiple_range(N) :
+     for i in range(1, N+1) :
+             for x in range(1,13):
+              product = i*x
+              print(f"{i}  x  {x}  =  {product}")
+             print("------------------")
+def main() :
+    n = int(input("Enter the positve you want multiplies of? "))
+    if n <= 0 :
+         print("Error: Invalid input( must be a positive integer)")
+    else :
+         mutiples_single(n)
+         N = int(input("Enter a number? "))
+         multiple_range(N)
+
+         
+
+if __name__ == "__main__":
+    main()
