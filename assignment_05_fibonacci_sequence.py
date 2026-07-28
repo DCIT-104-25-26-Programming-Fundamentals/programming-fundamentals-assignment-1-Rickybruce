@@ -48,4 +48,46 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+ 
+def fibonacci_seq(num) :
+    seq = []
+    for i in range(num) :
+        if i == 0:
+            seq.append(0)
+        elif i == 1:
+            seq.append(1)
+        else :
+            seq.append(seq[i-2]+seq[i-1])
 
+    return seq
+
+def check_for_fib(fib_num) :
+    if fib_num < 0:
+        return False
+
+    a, b = 0, 1
+    if fib_num == 0:
+        return True
+    while b < fib_num:
+        a, b = b, a + b
+    return b == fib_num
+
+
+def main() :
+    num = int(input("How many terms? "))
+    if num <= 0:
+        print("Number must be a positive non zero integer")
+        return
+
+    fib_seq = fibonacci_seq(num)
+    print("Fibonacci seq:", " ".join(map(str, fib_seq)))
+
+    fib_num = int(input("Enter a number to check: "))
+    if check_for_fib(fib_num):
+        print(f"{fib_num} is a Fibonacci number.")
+    else:
+        print(f"{fib_num} is NOT a Fibonacci number.")
+
+
+if __name__ == "__main__":
+    main()
