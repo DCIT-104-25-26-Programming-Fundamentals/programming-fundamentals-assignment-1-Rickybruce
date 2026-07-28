@@ -59,4 +59,114 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def transpose(matrix):
+    transpose_matrix = []
 
+    for j in range(columns):
+        Trow = []
+        for i in range(rows):
+            Trow.append(matrix[i][j])
+        transpose_matrix.append(Trow)
+    print("\nTransposed Matrix:")
+    for row in transpose_matrix:
+        print(*row)
+
+def add_matrix(matrix1, matrix2):
+    sum_matrix = []
+
+    for i in range(rows):
+        row = []
+        for j in range(columns):
+            row.append(matrix1[i][j] + matrix2[i][j])
+        sum_matrix.append(row)
+
+    print("\nSum Matrix:")
+    for row in sum_matrix:
+        print(*row)
+
+def multiply_matrix(matrix1, matrix2):
+    product_matrix = []
+
+    for i in range(len(matrix1)):
+        row = []
+        for j in range(len(matrix2[0])):
+            total = 0
+            for k in range(len(matrix2)):
+                total += matrix1[i][k] * matrix2[k][j]
+            row.append(total)
+        product_matrix.append(row)
+
+    print("\nProduct Matrix:")
+    for row in product_matrix:
+        print(*row)
+        
+def main():
+    global rows, columns
+
+    rows = int(input(" Enter number of rows: "))
+    columns = int(input(" Enter number of column: "))
+
+    matrix = []
+
+    for i in range(rows):
+        row = list(map(int, input(f"Enter row {i + 1}: ").split()))
+        if len(row) == columns:
+            matrix.append(row)
+        else:
+            print(f"Please enter exactly {columns} numbers.")
+            return
+
+    transpose(matrix)
+
+    print("\nPART B")
+
+    rows = int(input("Enter number of rows: "))
+    columns = int(input("Enter number of columns: "))
+
+    print("Enter Matrix 1")
+    matrix1 = []
+
+    for i in range(rows):
+        row = list(map(int, input(f"Enter row {i + 1}: ").split()))
+        matrix1.append(row)
+
+    print("Enter Matrix 2")
+    matrix2 = []
+
+    for i in range(rows):
+        row = list(map(int, input(f"Enter row {i + 1}: ").split()))
+        matrix2.append(row)
+
+    add_matrix(matrix1, matrix2)
+
+    print("\nPART C")
+
+    rowsA = int(input("Enter rows for Matrix A: "))
+    colsA = int(input("Enter columns for Matrix A: "))
+
+    print("Enter Matrix A")
+    matrixA = []
+
+    for i in range(rowsA):
+        row = list(map(int, input(f"Enter row {i + 1}: ").split()))
+        matrixA.append(row)
+
+    rowsB = int(input("Enter rows for Matrix B: "))
+    colsB = int(input("Enter columns for Matrix B: "))
+
+    if colsA != rowsB:
+        print("Matrix multiplication is not possible.")
+        return
+
+    print("Enter Matrix B")
+    matrixB = []
+
+    for i in range(rowsB):
+        row = list(map(int, input(f"Enter row {i + 1}: ").split()))
+        matrixB.append(row)
+
+    multiply_matrix(matrixA, matrixB)
+
+
+if __name__ == "__main__":
+    main()
