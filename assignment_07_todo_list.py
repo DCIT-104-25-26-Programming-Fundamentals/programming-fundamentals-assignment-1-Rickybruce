@@ -79,3 +79,62 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def add_task(todos) :
+    new_todo = str(input("Enter task: "))
+    todos.append(new_todo)
+    print(f"Task added: \"{new_todo}\"")
+
+def view_all_task(todos) :
+    n = len(todos)
+    if n == 0 :
+        print("Hey, you don't have any active task to perform")
+    else :
+        for i in range(n) :
+            print(f"{i+1}. {todos[i]}")
+
+
+def delete_a_task(todos) :
+    n = len(todos)
+    if n == 0 :
+        print("There are no tasks to delete.")
+        return
+
+    view_all_task(todos)
+
+    d = int(input("Enter task number to delete: "))
+    if d < 1 or d > n :
+        print("Error: invalid task number")
+        return
+
+    deleted_todo = todos[d-1]
+    del todos[d-1]
+    print(f"Task \"{deleted_todo}\" has been removed.")
+
+
+def main() :
+    todos = []
+    print("============================")
+    print("     TO-DO LIST MENU")
+    print(" ============================")
+    print("1. Add task")
+    print("2. View tasks")
+    print("3. Delete task")
+    print("4. Quit")
+
+    n = int(input("Enter your choice (1-4): "))
+    if n == 4 :
+        print("Goodbye")
+    while n != 4 :
+        if n == 1 :
+            add_task(todos)
+        elif n == 2 :
+            view_all_task(todos)
+        elif n == 3 :
+            delete_a_task(todos)
+        else :
+            print("Invalid choice. Please enter a number from 1 to 4.")
+
+        n = int(input("Enter your choice (1-4): "))
+
+if __name__ == "__main__":
+    main()
